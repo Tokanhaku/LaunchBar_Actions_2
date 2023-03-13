@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIconFile</key>
+	<string>feather_regular-Template.png</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.tokanhaku.LaunchBar.action.Proofreading</string>
+	<key>CFBundleName</key>
+	<string>Proofreading</string>
+	<key>LBArgument</key>
+	<string>Text in English, German or Chinese</string>
+	<key>LBDescription</key>
+	<dict>
+		<key>LBArgument</key>
+		<string>Text in English, German or Chinese</string>
+		<key>LBAuthor</key>
+		<string>ToKanhaku</string>
+		<key>LBEmail</key>
+		<string></string>
+		<key>LBResult</key>
+		<string>Result copied into clippboard</string>
+		<key>LBSummary</key>
+		<string>Proofreading for spelling, grammar and punctuation errors.</string>
+		<key>LBTwitter</key>
+		<string></string>
+		<key>LBWebsiteURL</key>
+		<string></string>
+	</dict>
+	<key>LBResult</key>
+	<string>Result copied into clippboard</string>
+	<key>LBScripts</key>
+	<dict>
+		<key>LBDefaultScript</key>
+		<dict>
+			<key>LBAcceptedArgumentTypes</key>
+			<array>
+				<string>string</string>
+			</array>
+			<key>LBRequiresArgument</key>
+			<true/>
+			<key>LBResultType</key>
+			<string>string</string>
+			<key>LBRunInBackground</key>
+			<true/>
+			<key>LBScriptName</key>
+			<string>default.py</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
