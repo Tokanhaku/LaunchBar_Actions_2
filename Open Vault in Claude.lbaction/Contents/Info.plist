@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIconFile</key>
+	<string>claude-brands-Template.png</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.tokanhaku.LaunchBar.action.OpenVaultInClaude</string>
+	<key>CFBundleName</key>
+	<string>Open Obsidian Vault in Claude</string>
+	<key>LBDescription</key>
+	<dict>
+		<key>LBAuthor</key>
+		<string>Huanbo Tu</string>
+		<key>LBEmail</key>
+		<string>huanbo.tu@gmail.com</string>
+		<key>LBSummary</key>
+		<string>Open Terminal in Obsidian vault and launch Claude Code.</string>
+	</dict>
+	<key>LBScripts</key>
+	<dict>
+		<key>LBDefaultScript</key>
+		<dict>
+			<key>LBScriptName</key>
+			<string>default.py</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
