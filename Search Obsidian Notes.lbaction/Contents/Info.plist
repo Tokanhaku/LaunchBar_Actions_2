@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIconFile</key>
-	<string>obsidian_icon.png</string>
+	<string>obsidian-brands-Template.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.tokanhaku.LaunchBar.action.SearchObsidianNotes</string>
 	<key>CFBundleName</key>
@@ -12,10 +12,10 @@
 	<dict>
 		<key>LBAuthor</key>
 		<string>Huanbo Tu</string>
-		<key>LBSummary</key>
-		<string>Search Obsidian notes by filename or content and open the selected one.</string>
 		<key>LBEmail</key>
 		<string>huanbo.tu@outlook.de</string>
+		<key>LBSummary</key>
+		<string>Search Obsidian notes by filename or content and open the selected one.</string>
 		<key>LBTwitter</key>
 		<string>@tokanhaku</string>
 		<key>LBWebsiteURL</key>
@@ -33,8 +33,6 @@
 			<true/>
 			<key>LBRequiresArgument</key>
 			<true/>
-			<key>LBResultType</key>
-			<string>unknown</string>
 			<key>LBReturnsResult</key>
 			<true/>
 			<key>LBScriptName</key>

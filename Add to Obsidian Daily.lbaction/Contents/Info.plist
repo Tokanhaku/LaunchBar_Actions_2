@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIconFile</key>
-	<string>obsidian_icon.png</string>
+	<string>obsidian-brands-Template.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.tokanhaku.LaunchBar.action.AddToObsidianDaily</string>
 	<key>CFBundleName</key>

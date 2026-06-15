@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIconFile</key>
-	<string>obsidian_icon.png</string>
+	<string>obsidian-brands-Template.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.tokanhaku.LaunchBar.action.NewQuickNote</string>
 	<key>CFBundleName</key>
@@ -12,10 +12,10 @@
 	<dict>
 		<key>LBAuthor</key>
 		<string>Huanbo Tu</string>
-		<key>LBSummary</key>
-		<string>Quickly create a note in Obsidian's inbox, with text or file/image attachments.</string>
 		<key>LBEmail</key>
 		<string>huanbo.tu@outlook.de</string>
+		<key>LBSummary</key>
+		<string>Quickly create a note in Obsidian's inbox, with text or file/image attachments.</string>
 		<key>LBTwitter</key>
 		<string>@tokanhaku</string>
 		<key>LBWebsiteURL</key>
@@ -28,10 +28,7 @@
 			<key>LBAcceptedArgumentTypes</key>
 			<array>
 				<string>string</string>
-				<string>paths</string>
 			</array>
-			<key>LBRequiresArgument</key>
-			<false/>
 			<key>LBScriptName</key>
 			<string>default.py</string>
 		</dict>
