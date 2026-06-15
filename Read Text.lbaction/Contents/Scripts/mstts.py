@@ -29,6 +29,7 @@ def mstts(text, lan):
     voice = random.choice(voice_list)
     print(voice)
 
+
     speech_config.speech_synthesis_voice_name = voice
     
     # Creates a speech synthesizer using the default speaker as audio output.
