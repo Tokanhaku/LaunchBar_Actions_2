@@ -12,6 +12,8 @@
 	<dict>
 		<key>LBAuthor</key>
 		<string>Huanbo Tu</string>
+		<key>LBSummary</key>
+		<string>Search Obsidian notes by filename or content and open the selected one.</string>
 		<key>LBEmail</key>
 		<string>huanbo.tu@outlook.de</string>
 		<key>LBTwitter</key>

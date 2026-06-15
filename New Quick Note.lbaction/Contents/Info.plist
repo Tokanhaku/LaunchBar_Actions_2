@@ -12,6 +12,8 @@
 	<dict>
 		<key>LBAuthor</key>
 		<string>Huanbo Tu</string>
+		<key>LBSummary</key>
+		<string>Quickly create a note in Obsidian's inbox, with text or file/image attachments.</string>
 		<key>LBEmail</key>
 		<string>huanbo.tu@outlook.de</string>
 		<key>LBTwitter</key>

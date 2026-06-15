@@ -12,6 +12,8 @@
 	<dict>
 		<key>LBAuthor</key>
 		<string>Huanbo Tu</string>
+		<key>LBSummary</key>
+		<string>Open today's daily note in Obsidian.</string>
 		<key>LBEmail</key>
 		<string>huanbo.tu@outlook.de</string>
 		<key>LBTwitter</key>

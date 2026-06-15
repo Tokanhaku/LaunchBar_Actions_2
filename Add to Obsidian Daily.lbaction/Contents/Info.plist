@@ -14,6 +14,8 @@
 		<string>Huanbo Tu</string>
 		<key>LBEmail</key>
 		<string>huanbo.tu@outlook.de</string>
+		<key>LBSummary</key>
+		<string>Append text or files/images to today's daily note in Obsidian.</string>
 		<key>LBTwitter</key>
 		<string>@tokanhaku</string>
 		<key>LBWebsiteURL</key>
@@ -26,7 +28,6 @@
 			<key>LBAcceptedArgumentTypes</key>
 			<array>
 				<string>string</string>
-				<string>paths</string>
 			</array>
 			<key>LBKeepWindowActive</key>
 			<true/>
