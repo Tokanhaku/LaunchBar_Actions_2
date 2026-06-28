@@ -2,7 +2,7 @@
 import subprocess
 import shlex
 
-VAULT = "/Users/huanbo/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianVault"
+VAULT = "/Users/huanbo/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianVault/Notes"
 CLAUDE = "/Users/huanbo/.local/bin/claude"
 
 shell_cmd = f"cd {shlex.quote(VAULT)} && {shlex.quote(CLAUDE)}"
