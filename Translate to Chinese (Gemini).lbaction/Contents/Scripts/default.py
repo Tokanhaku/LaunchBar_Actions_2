@@ -38,7 +38,7 @@ for arg in sys.argv[1:]:
             time.sleep(1.5 * (attempt + 1))
 
         string = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-        item = {"title": string}
+        item = {"title": string, "icon": "gemini-Template.png"}
     except Exception as e:
         item = {
             "title": "Error: " + str(e),

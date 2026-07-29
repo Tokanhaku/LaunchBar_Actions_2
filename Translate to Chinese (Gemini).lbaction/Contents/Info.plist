@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIconFile</key>
-	<string>gemini-Template.png</string>
+	<string>symbol:translate</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.tokanhaku.LaunchBar.action.GeminiTranslateToChinese</string>
 	<key>CFBundleName</key>

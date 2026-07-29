@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIconFile</key>
-	<string>deepl_Template.png</string>
+	<string>symbol:translate</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.tokanhaku.LaunchBar.action.DeepLTranslateToChinese</string>
 	<key>CFBundleName</key>

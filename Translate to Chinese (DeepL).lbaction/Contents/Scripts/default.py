@@ -35,7 +35,7 @@ for arg in sys.argv[1:]:
             item["title"] = content['text']
             item["subtitle"] = content["detected_source_language"]\
                                + ": " + arg
-            item["icon"] = "zhong_Template.png"
+            item["icon"] = "deepl_Template.png"
         except:
             item = {}
             item["title"] = "Error!"
