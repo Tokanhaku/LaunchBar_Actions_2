@@ -5,9 +5,9 @@
 	<key>CFBundleIconFile</key>
 	<string>file-magnifying-glass-light_Template.png</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.tokanhaku.LaunchBar.action.SearchFilesByName</string>
+	<string>com.tokanhaku.LaunchBar.action.SearchPDFContents</string>
 	<key>CFBundleName</key>
-	<string>Search Files by Name</string>
+	<string>Search PDF Contents</string>
 	<key>LBDescription</key>
 	<dict>
 		<key>LBAuthor</key>
