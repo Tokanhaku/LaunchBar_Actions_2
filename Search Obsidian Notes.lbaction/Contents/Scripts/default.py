@@ -56,7 +56,7 @@ if query:
 if not items:
     items.append({
         "title": "No result!",
-        "icon": "grin-beam-sweat-Template",
+        "icon": "symbol:exclamationmark.magnifyingglass",
     })
 
 print(json.dumps(items[:MAX_RESULTS]))

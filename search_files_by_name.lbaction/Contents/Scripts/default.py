@@ -58,7 +58,7 @@ for arg in sys.argv[1:]:
     if not files:
         items.append({
             "title": "No result!",
-            "icon": "grin-beam-sweat-Template",
+            "icon": "symbol:exclamationmark.magnifyingglass",
         })
     else:
         for file in files[:MAX_RESULTS]:
