@@ -10,6 +10,8 @@
 	<string>Search PDF Contents</string>
 	<key>LBDescription</key>
 	<dict>
+		<key>LBSummary</key>
+		<string>Full-text search inside PDF files using Spotlight's content index.</string>
 		<key>LBAuthor</key>
 		<string>Huanbo Tu</string>
 		<key>LBEmail</key>
