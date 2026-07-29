@@ -128,7 +128,39 @@ NSFontManager.shared.font(withFamily: n, traits: [], weight: 5, size: 32)
 
 - bundle id：`com.tokanhaku.LaunchBar.action.<ActionName>`
 - `LBDescription`：`LBAuthor` = Huanbo Tu，`LBEmail` = huanbo.tu@outlook.de，`LBTwitter` = @tokanhaku
-- 图标现状：7 个用 `symbol:`，6 个用手工做的 `*-Template.png`（obsidian / claude / deepl / gemini / feather）
+- remote：`git@github.com:Tokanhaku/LaunchBar_Actions_2.git`，只有 `main` 一个分支，直接提交到 main
+
+### 图标约定（已统一，新写 action 照这个来）
+
+**`symbol:` 是默认选择**，只有 SF Symbols 确实没有的品牌 logo 才用 bundle 内的 Template PNG
+（现存 5 个：obsidian / claude / deepl / gemini / feather）。`font-awesome:` 前缀已从整个仓库清除。
+
+固定语义，别混用：
+
+| 场景 | 图标 |
+|---|---|
+| 脚本报错、命令返回非零 | `symbol:exclamationmark.triangle` |
+| 搜索正常跑完但没匹配（"No result!"） | `symbol:exclamationmark.magnifyingglass` |
+
+这两个**必须保持不同** —— 同一个 action 里两种状态都可能出现，图标一样的话就分辨不出是搜索挂了还是单纯没结果。
+
+**用任何 SF Symbol 之前先验证它存在**，名字很容易想当然（`questionmark.magnifyingglass` 就不存在）：
+
+```swift
+NSImage(systemSymbolName: "exclamationmark.magnifyingglass", accessibilityDescription: nil) != nil
+```
+
+### 找无用图片时注意
+
+**结果项的图标是写在脚本里的，不在 Info.plist 里。** 只 grep Info.plist 判断某个图片没人用，会误删。
+必须连 `Contents/Scripts/` 一起 grep：
+
+```sh
+grep -rlF "$stem" "$action/Contents/Info.plist" "$action/Contents/Scripts"
+```
+
+现在还留在 bundle 里被脚本引用的有 `file-magnifying-glass-light_Template`（两个搜索 action 的结果项）
+和 `obsidian_icon.png`（Search Obsidian Notes）。
 
 ---
 
