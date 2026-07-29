@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIconFile</key>
+	<string>character:&#xF2B4;?font=Font%20Awesome%207%20Brands</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.tokanhaku.LaunchBar.action.FontAwesome7Icons</string>
+	<key>CFBundleName</key>
+	<string>Font Awesome 7 Icons</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>LBTextInputTitle</key>
+	<string>Search Icons</string>
+	<key>LBDescription</key>
+	<dict>
+		<key>LBAuthor</key>
+		<string>Huanbo Tu</string>
+		<key>LBEmail</key>
+		<string>huanbo.tu@outlook.de</string>
+		<key>LBTwitter</key>
+		<string>@tokanhaku</string>
+		<key>LBWebsiteURL</key>
+		<string>https://fontawesome.com</string>
+		<key>LBSummary</key>
+		<string>Browses all icons of the current Font Awesome Free release. Replaces LaunchBar's built-in action, which is stuck on Font Awesome 4.7.</string>
+		<key>LBArgument</key>
+		<string>Optional search text. Unlike LaunchBar's own filtering it also matches Font Awesome's search terms, so "notification" finds the bell icon.</string>
+		<key>LBResult</key>
+		<string>Return copies the CSS classes, ⌘ the LaunchBar icon string, ⌥ the glyph, ⌃ the HTML tag, ⇧ opens the icon on fontawesome.com.</string>
+		<key>LBRequirements</key>
+		<string>The Font Awesome Free OTFs in ~/Library/Fonts. The action offers to download them if they are missing, and can update itself to newer Font Awesome releases.</string>
+	</dict>
+	<key>LBScripts</key>
+	<dict>
+		<key>LBDefaultScript</key>
+		<dict>
+			<key>LBScriptName</key>
+			<string>default.js</string>
+			<key>LBReturnsResult</key>
+			<true/>
+			<key>LBKeepWindowActive</key>
+			<true/>
+			<key>LBRequiresArgument</key>
+			<false/>
+			<key>LBAcceptedArgumentTypes</key>
+			<array>
+				<string>string</string>
+			</array>
+			<key>LBLiveFeedbackEnabled</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>NSHumanReadableCopyright</key>
+	<string>Font Awesome Free by Fonticons, Inc. — Icons: CC BY 4.0, Fonts: SIL OFL 1.1</string>
+</dict>
+</plist>
