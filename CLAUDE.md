@@ -3,7 +3,8 @@
 这个目录是 LaunchBar 的用户 action 目录（`~/Library/Application Support/LaunchBar/Actions`），同时是个 git repo。
 下面是实际踩过坑总结出来的东西，动手前先看一遍，能省掉大量试错。
 
-当前环境：LaunchBar 6.24 / macOS 15 (Darwin 25) / Apple Silicon。
+当前环境：LaunchBar 6.24 (build 6297) / macOS 26.5.2 Tahoe (Darwin 25) / Apple Silicon。
+（Darwin 25 对应 macOS 26，不是 15；LaunchBar 6.24 是当前最新版，2026-04-27 发布。）
 
 ---
 
@@ -202,3 +203,79 @@ chrome/chromium/linkedin/dribbble/trello/instagram/twitch/codepen/codesandbox/fr
 
 **取舍**：要统一 outline 风格 → Lucide（2007 个）远胜 FA Free 的 regular（只有 169 个）。
 但 Lucide 完全没有品牌 logo，FA 的 572 个 brands 是它不可替代的地方。
+
+---
+
+## 8. 主题（Theme）
+
+主题是 `.lbtheme` bundle，跟 action 一样是纯声明式的，可以自己写。
+
+- 内置的 11 个在 `/Applications/LaunchBar.app/Contents/Resources/Themes/`，用户主题放
+  `~/Library/Application Support/LaunchBar/Themes/`（双击 `.lbtheme` 也能装，app 注册了这个文档类型）
+- 结构：`Contents/Info.plist`（只要 `CFBundleIdentifier` + `CFBundleName`）+ `Contents/Resources/Properties.plist` + 可选图片
+- **继承靠 Properties.plist 里的显式 `parent` 键**（值是父主题的 bundle id），不是从点分 id 推导。
+  没写 `parent` 就回落到 `Base`（Base 只提供图片，没有 Properties.plist；其余默认值编译在 app 里）
+- **明暗配对是给 id 追加 `.dark`**：`X` 的深色版必须是 `X.dark`，LaunchBar 会跟随系统外观自动切
+- 当前选择存在 `defaults` 的 `at.obdev.LaunchBar` → `Theme` 键（值是 bundle id）。
+  **LaunchBar 退出时会回写 defaults，所以要改这个键必须先退出 LaunchBar**
+- 改主题要重启 LaunchBar 才重新扫描（配置里有 `ODLBThemesRule`，主题也进索引，能直接输名字切换）
+
+### Properties.plist 语法
+
+约 260 个键，前缀分四组：`window*` / `inputArea*` / `itemList*` / `textInput*`，外加 `default*`（共享基色/字体）
+和 `templateIcon*`。取全量键名：
+
+```sh
+strings -a /Applications/LaunchBar.app/Contents/MacOS/LaunchBar \
+  | grep -E "^(window|inputArea|itemList|text|template|default)[A-Za-z0-9@]*$" | sort -u
+```
+
+- 自定义键 + `@名字` 引用（内置主题用 `brightBlue` / `searchColor` 这种）
+- 表达式支持 `+` `-` `*`：`"@defaultTextColor + 0.1"`、`"@itemListSelectionHighlightColor - 0.3"`
+- 任何键都能加 `@1x` / `@2x` 后缀区分分辨率
+- 颜色三种写法：`"0 0 0 0.5"`（rgba 0–1）/ `"#00000080"` / `clearColor`、`whiteColor`
+- 还有 edge insets `"6 6 6 6"` / point / rect / size / gradient（`{"0.0": 色, "1.0": 色}`）/ 字体名 / 图片名
+- 解析失败会 NSLog `Theme "%@", key "%@": Unable to parse …` 然后**静默回退**到黑色或系统字体
+
+### Liquid Glass 的结论
+
+**做不到真的。** LaunchBar 6.24 虽然是 SDK 26.0 编译的，但 `nm -arch arm64 -u` 里只有
+`_OBJC_CLASS_$_NSVisualEffectView`，没有 `NSGlassEffectView`；主题里也没有任何键能换视图类，更不能塞代码。
+
+能做的是仿玻璃：`windowBackgroundMaterial`（`NSVisualEffectMaterial` 原始枚举值，内置主题用过 1/2/21）+
+低 alpha `windowBackgroundColor` + `windowCornerRadius`/`windowCornerShapeExponent`（连续圆角）+
+`windowHasBorder`/`windowBorderColor` 的亮边 + `windowHasInnerShadow` 系列伪造厚度和高光 +
+半透明 `itemListSelectionHighlightColor` 的胶囊选中。
+拿不到的：折射/lensing、跟随指针的高光、形变动画、选中条自己的玻璃层。
+
+自制的 `Glass` 主题（`Glass` + `Glass.dark`）就是按这套做的。生成脚本 `Themes/build_glass_themes.py`
+在本 repo 里（这是唯一一个非 action 的目录），跑一遍会把两个 bundle 重新写进**同级的**
+`~/Library/Application Support/LaunchBar/Themes/`（会覆盖同名的）。改完要退出 LaunchBar 再改
+`Theme` 键，然后重启。
+
+调这类主题时实测出来的四条，别再重新试一遍：
+
+1. **material 0/1/2 是 legacy 的外观固定档**（`.appearanceBased`/`.light`/`.dark`）。
+   `1` 在 dark mode 下**仍然发白** —— `.dark` 变体必须覆盖成 `2`（内置 `Default.dark` 就是这么干的）。
+   3 以上的现代材质会自己适配外观，不用覆盖。
+2. **Tahoe 上越"现代"的材质越不透**：`5` menu / `13` hudWindow / `21` underWindowBackground 都是重磨砂，
+   看着几乎不透明；legacy `1`/`2` 反而最薄最通透。实测挑下来用的是 1/2。
+3. **通透度唯一的旋钮是 `windowBackgroundColor` 的 alpha**。`windowBackgroundAlphaValue` /
+   `windowBackgroundBlurRadius` / `windowBackgroundAppearance` 这几个 setter 在二进制里存在，
+   但**没有对应的主题键字符串**，改不了；磨砂浓度是 AppKit 定的。
+   白 5% / 黑 10% 是舒服的值，再往下（白 2%）肉眼已经看不出区别。
+4. **明暗两边的边缘处理是反的**，别想着共用一套值：
+   - 浅色：纯白的 `windowBorderColor` 会糊成一片雾，`windowInnerShadow`（blur 3）又会把边晕开。
+     最后是一道**深色 1px 发丝线**（`#00000040`，`windowBorderWidth` **0.5** —— Retina 上 1pt = 2px 显粗）
+     加 `windowHasInnerShadow: false`，去掉一切会晕边的东西才够利落。
+   - 深色：反过来，边和内高光都用低透明度白（`#FFFFFF40` / `#FFFFFF33`，blur 3），这样才有厚度感。
+
+   所以 `dark_props` 里把 `windowHasBorder` / `windowBorder*` / `windowHasInnerShadow` / `windowInnerShadow*`
+   **全部显式钉死**，免得调浅色时把深色带跑。
+5. **底透了要补文字描边，而且描边分区域**。半透明底上文字会被背景吃掉，内置主题的办法是给文字加白色描边
+   （`defaultTextShadowColor`，Default 是白 33%）。
+   **但 Default 把 `inputAreaTextShadowColor` 设成了 `clearColor`** —— 输入区（包括你输入的那串缩写字母）
+   完全不吃 `defaultTextShadow*`，只认 `inputAreaTextShadow*`。改错地方会看着"改了没效果"。
+   最后浅色用的是：缩写字母 `inputAreaAbbreviationTextColor` 黑 82%（原本继承 dimmed 的 50%）+
+   `inputAreaTextShadowColor` 白 70% / blur 1.0。深色必须把这两个钉回 `clearColor` / `0`，
+   白字底下垫白描边会发光。
