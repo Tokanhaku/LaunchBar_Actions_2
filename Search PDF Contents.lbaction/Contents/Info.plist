@@ -3,19 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIconFile</key>
-	<string>file-magnifying-glass-light_Template.png</string>
+	<string>symbol:text.magnifyingglass</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.tokanhaku.LaunchBar.action.SearchPDFContents</string>
 	<key>CFBundleName</key>
 	<string>Search PDF Contents</string>
 	<key>LBDescription</key>
 	<dict>
-		<key>LBSummary</key>
-		<string>Full-text search inside PDF files using Spotlight's content index.</string>
 		<key>LBAuthor</key>
 		<string>Huanbo Tu</string>
 		<key>LBEmail</key>
 		<string>huanbo.tu@outlook.de</string>
+		<key>LBSummary</key>
+		<string>Full-text search inside PDF files using Spotlight's content index.</string>
 		<key>LBTwitter</key>
 		<string>@tokanhaku</string>
 		<key>LBWebsiteURL</key>

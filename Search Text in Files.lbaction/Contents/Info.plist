@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIconFile</key>
-	<string>file-magnifying-glass-light_Template.png</string>
+	<string>symbol:text.magnifyingglass</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.tokanhaku.LaunchBar.action.SearchTextInFiles</string>
 	<key>CFBundleName</key>
