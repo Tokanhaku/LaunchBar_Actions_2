@@ -39,6 +39,6 @@ for arg in sys.argv[1:]:
         except:
             item = {}
             item["title"] = "Error!"
-            item["icon"] = "font-awesome:fa-exclamation-triangle"
+            item["icon"] = "symbol:exclamationmark.triangle"
         items.append(item)
 print(json.dumps(items))

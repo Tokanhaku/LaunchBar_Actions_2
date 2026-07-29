@@ -80,7 +80,7 @@ for arg in sys.argv[1:]:
     except sp.CalledProcessError as e:
         items.append({
             "title": "Search failed: " + e.stderr.strip(),
-            "icon": "font-awesome:fa-exclamation-triangle",
+            "icon": "symbol:exclamationmark.triangle",
         })
         continue
 

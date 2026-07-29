@@ -42,7 +42,7 @@ for arg in sys.argv[1:]:
     except Exception as e:
         item = {
             "title": "Error: " + str(e),
-            "icon": "font-awesome:fa-exclamation-triangle",
+            "icon": "symbol:exclamationmark.triangle",
         }
 
     items.append(item)

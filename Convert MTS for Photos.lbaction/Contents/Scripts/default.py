@@ -21,7 +21,7 @@ def find_ffmpeg():
 def error_item(title, subtitle=None):
     item = {
         "title": title,
-        "icon": "font-awesome:fa-exclamation-triangle",
+        "icon": "symbol:exclamationmark.triangle",
     }
     if subtitle:
         item["subtitle"] = subtitle
